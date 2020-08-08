@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="ArcGIS JS v4, Calcite Maps and Bootstrap Example">
+ 
+  <title>ArcGIS JS v4, Calcite Maps and Bootstrap Example</title>
+
+  <!-- Calcite Maps Bootstrap https://github.com/Esri/calcite-maps-->
+  
+  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">
+  <!--link rel="stylesheet" href="http://localhost/GitHub/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css"-->
+  
+  <!-- Calcite Maps -->
+  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">
+  <!--link rel="stylesheet" href="http://localhost/GitHub/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css"-->
+
+  <!-- ArcGIS JS 4 -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body class="calcite-maps calcite-nav-top">
+  <!-- Navbar -->
+
+  <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
+    <!-- Menu -->
+    <div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
+      <a class="dropdown-toggle" role="menubutton" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <div class="calcite-dropdown-toggle">
+          <span class="sr-only">Toggle dropdown menu</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a role="menuitem" tabindex="0" data-target="#panelInfo" aria-haspopup="true"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+        <li><a role="menuitem" tabindex="0" href="#" data-target="#panelLegend" aria-haspopup="true"><span class="glyphicon glyphicon-list-alt"></span> Legend</a></li>
+        <li><a role="menuitem" tabindex="0" href="#" id="calciteToggleNavbar" aria-haspopup="true"><span class="glyphicon glyphicon-fullscreen"></span> Full Map</a></li>
+      </ul>
+    </div>
+    <!-- Title -->
+    <div class="calcite-title calcite-overflow-hidden">
+      <span class="calcite-title-main">Nasim's Maps</span>
+      <span class="calcite-title-divider hidden-xs"></span>
+      <span class="calcite-title-sub hidden-xs">A Bootstrap theme for building modern map apps</span>
+    </div>
+    <!-- Nav -->
+    <ul class="nav navbar-nav calcite-nav">
+      <li>
+        <div class="calcite-navbar-search calcite-search-expander">
+          <div id="searchWidgetDiv"></div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!--/.calcite-navbar -->
+
+  <!-- Map  -->
+
+  <div class="calcite-map calcite-map-absolute">
+    <div id="mapViewDiv"></div>
+  </div>
+
+  <!-- /.calcite-map -->
+
+  <!-- Panels -->
+
+  <div class="calcite-panels calcite-panels-right calcite-text-light calcite-bg-dark panel-group">
+
+    <!-- Panel - Basemaps -->
+
+    <div id="panelInfo" class="panel collapse">
+      <div id="headingInfo" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">About</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelInfo"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
+        </div>
+      </div>
+      <div id="collapseInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingInfo">
+        <div class="panel-body">
+          <p>This is built by me! and shared the same as a base for the educational purposes to build ArcGIS Javascript Application - Nasim</p>
+        </div>
+     </div>
+    </div>
+
+    <!-- Panel - Legend -->
+
+    <div id="panelLegend" class="panel collapse">
+      <div id="headingLegend" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Legend</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelLegend"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseLegend" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLegend">
+        <div class="panel-body">            
+          <div id="legendDiv"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- /.calcite-panels -->
+
+  <script type="text/javascript">
+    var dojoConfig = {
+      packages: [{
+        name: "bootstrap",
+        location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
+      },
+      {
+        name: "calcite-maps",
+        location: "https://esri.github.io/calcite-maps/dist/js/dojo"
+        
+      }]
+    };
+  </script>
+
+  <!-- ArcGIS JS 4 -->
+  <script src="https://js.arcgis.com/4.10/"></script>
+
+  <script>
+    
+    require([
+	  "esri/Map",
+      // ArcGIS
+      "esri/views/MapView",
+	  "esri/layers/MapImageLayer",
+      // Widgets
+      "esri/widgets/Home",
+      "esri/widgets/Zoom",
+      "esri/widgets/Compass",
+      "esri/widgets/Search",
+      "esri/widgets/Legend",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/Attribution",
+
+      // Bootstrap
+      "bootstrap/Collapse",
+      "bootstrap/Dropdown",
+
+      // Calcite Maps
+      "calcite-maps/calcitemaps-v0.10",
+      
+      // Calcite Maps ArcGIS Support
+      "calcite-maps/calcitemaps-arcgis-support-v0.10",
+
+      "dojo/domReady!"
+    ], function(Map, MapView, MapImageLayer, Home, Zoom, Compass, Search, Legend, ScaleBar, Attribution,Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport) {
+        /*****************************************************************
+         * Create renderers for each sublayer
+         *****************************************************************/
+        var citiesRenderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+            size: 4,
+            color: [255, 255, 115, 255],
+            style: "esriSMSCircle",
+            outline: {
+              width: 1,
+              color: [0, 0, 0, 255]
+            }
+          },
+          label: "Cities"
+        };
+        var statesRenderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
+            style: "none",
+            outline: {
+              width: 2,
+              color: "red"
+            }
+          },
+          label: "State boundaries"
+        };
+
+        var countiesRenderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
+            style: "none",
+            outline: {
+              width: 1,
+              color: "blue"
+            }
+          },
+          label: "County boundaries"
+        };
+      /******************************************************************
+       *
+       * Create the map, view and widgets
+       * 
+       ******************************************************************/
+        var mapUSANetwork = new MapImageLayer({
+          url:
+            "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
+          sublayers: [
+            {
+              id: 3,
+              renderer: countiesRenderer,
+              opacity: 0.5,
+              minScale: 9250000,
+              // labelingInfo autocasts to an array of LabelClass objects
+              labelingInfo: [
+                {
+                  labelExpression: "[name]",
+                  labelPlacement: "always-horizontal",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: [255, 255, 255, 0.7],
+                    haloColor: [0, 0, 0, 0.7],
+                    haloSize: 1,
+                    font: {
+                      size: 11
+                    }
+                  },
+                  minScale: 2400000,
+                  maxScale: 73000
+                }
+              ]
+            },
+            {
+              id: 2,
+              renderer: statesRenderer,
+              opacity: 0.7,
+              // labelingInfo autocasts to an array of LabelClass objects
+              // this sublayer has two label classes. The first sets the
+              // label as the state abbreviation at small scales. When the view
+              // zooms to larger scales the whole state name is used instead
+              labelingInfo: [
+                {
+                  labelExpression: "[state_abbr]",
+                  labelPlacement: "always-horizontal",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: [255, 255, 255, 0.85],
+                    font: {
+                      size: 16,
+                      weight: "bolder"
+                    }
+                  },
+                  minScale: 18500000,
+                  maxScale: 9250000
+                },
+                {
+                  labelExpression: "[state_name]",
+                  labelPlacement: "always-horizontal",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: [255, 255, 255, 0.85],
+                    haloColor: "gray",
+                    haloSize: 1,
+                    font: {
+                      size: 14,
+                      weight: "bold"
+                    }
+                  },
+                  minScale: 9250000,
+                  maxScale: 2400000
+                }
+              ]
+            },
+            {
+              // sublayer with three label classes for labeling
+              // cities with different symbols at various scale
+              // levels.
+              id: 0,
+              renderer: citiesRenderer,
+              labelingInfo: [
+                {
+                  where: "pop2000 > 500000",
+                  labelExpression: "[areaname]",
+                  labelPlacement: "above-right",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: "white",
+                    font: {
+                      size: 10
+                    },
+                    backgroundColor: [0, 0, 0, 0.5]
+                  },
+                  minScale: 18500000,
+                  maxScale: 4800000
+                },
+                {
+                  where: "pop2000 > 500000",
+                  labelExpression: "[areaname]",
+                  labelPlacement: "above-right",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: "white",
+                    font: {
+                      size: 16
+                    },
+                    backgroundColor: [0, 0, 0, 0.5]
+                  },
+                  minScale: 4800000
+                },
+                {
+                  where: "pop2000 <= 500000",
+                  labelExpression: "[areaname]",
+                  labelPlacement: "above-right",
+                  symbol: {
+                    type: "text", // autocasts as new TextSymbol()
+                    color: "white",
+                    font: {
+                      size: 7
+                    },
+                    backgroundColor: [0, 0, 0, 0.5]
+                  },
+                  minScale: 4800000
+                }
+              ]
+            }
+          ]
+        });
+		
+	  // Map
+      map = new Map({
+		basemap: "satellite",
+		layers: [mapUSANetwork]
+      });
+      
+      // View
+      var mapView = new MapView({
+        container: "mapViewDiv",
+        map: map,
+        padding: {
+          top: 50,
+          bottom: 0
+        },
+		zoom: 5,//USA
+		center: [-100, 39],//USA
+        ui: {components: []}
+      });
+
+      // Popup and panel sync
+      mapView.when(function(){
+        CalciteMapArcGISSupport.setPopupPanelSync(mapView);
+      });
+
+      // Search - add to navbar
+      var searchWidget = new Search({
+        container: "searchWidgetDiv",
+        view: mapView
+      });
+      CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
+
+      // Map widgets
+      var home = new Home({
+        view: mapView
+      });
+      mapView.ui.add(home, "top-left");
+
+      var zoom = new Zoom({
+        view: mapView
+      });
+      mapView.ui.add(zoom, "top-left");
+
+      var compass = new Compass({
+        view: mapView
+      });
+      mapView.ui.add(compass, "top-left");       
+      
+      var scaleBar = new ScaleBar({
+        view: mapView
+      });
+      mapView.ui.add(scaleBar, "bottom-left");
+
+      var attribution = new Attribution({
+        view: mapView
+      });
+      mapView.ui.add(attribution, "manual");
+
+      // Panel widgets - add legend
+      var legendWidget = new Legend({
+        container: "legendDiv",
+        view: mapView
+      });
+
+    });
+  </script>
+
+</body>
+</html>
