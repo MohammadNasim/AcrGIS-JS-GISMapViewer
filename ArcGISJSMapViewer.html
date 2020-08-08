@@ -1,40 +1,42 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="description" content="Calcite Maps Demo - ArcGIS">
-  <link rel="icon" href="https://www.esri.com/favicon.ico">
-  <title>Calcite Maps - ArcGIS 4.x 2D - 3D</title>
+  <meta name="description" content="ArcGIS JS v4, Calcite Maps and Bootstrap Example">
+ 
+  <title>ArcGIS JS v4, Calcite Maps and Bootstrap Example</title>
 
   <!-- Calcite Maps Bootstrap -->
   <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">
-
+  <!--link rel="stylesheet" href="http://localhost/GitHub/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css"-->
+  
   <!-- Calcite Maps -->
   <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">
-  <!--link rel="stylesheet" href="../../dist/css/calcite-maps.min-v0.10.css"--> <!-- works -->
+  <!--link rel="stylesheet" href="http://localhost/GitHub/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css"-->
 
   <!-- ArcGIS JS 4 -->
   <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
+      width: 100%;
     }
   </style>
-  
+
 </head>
 
 <body class="calcite-maps calcite-nav-top">
-
   <!-- Navbar -->
 
-  <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark calcite-bgcolor-dark-blue">
+  <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
     <!-- Menu -->
-    <div class="dropdown calcite-dropdown calcite-bg-light calcite-text-dark" role="presentation">
+    <div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
       <a class="dropdown-toggle" role="menubutton" aria-haspopup="true" aria-expanded="false" tabindex="0">
         <div class="calcite-dropdown-toggle">
           <span class="sr-only">Toggle dropdown menu</span>
@@ -44,115 +46,88 @@
           <span></span>
         </div>
       </a>
-      <ul class="dropdown-menu calcite-menu-drawer">
-        <li><a class="hidden-md hidden-lg" href="#mapTab" aria-controls="mapTab" role="tab" data-toggle="tab"> Map</a></li>
-        <li><a class="active hidden-md hidden-lg" href="#sceneTab" aria-controls="sceneTab" role="tab" data-toggle="tab"> Scene</a></li>
-        <li><a role="menuitem" tabindex="0" data-target="#panelInfo" aria-haspopup="true"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
-        <li><a role="menuitem" tabindex="0" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
-        <li><a role="menuitem" tabindex="0" id="calciteToggleNavbar" aria-haspopup="true"><span class="glyphicon glyphicon-fullscreen"></span> Full Map</a></li>
+      <ul class="dropdown-menu" role="menu">
+        <li><a role="menuitem" tabindex="0" data-target="#panelInfo" aria-haspopup="true"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+        <li><a role="menuitem" tabindex="0" href="#" data-target="#panelLegend" aria-haspopup="true"><span class="glyphicon glyphicon-list-alt"></span> Legend</a></li>
+        <li><a role="menuitem" tabindex="0" href="#" id="calciteToggleNavbar" aria-haspopup="true"><span class="glyphicon glyphicon-fullscreen"></span> Full Map</a></li>
       </ul>
     </div>
     <!-- Title -->
     <div class="calcite-title calcite-overflow-hidden">
       <span class="calcite-title-main">Calcite Maps</span>
       <span class="calcite-title-divider hidden-xs"></span>
-      <span class="calcite-title-sub hidden-xs">Starter app for the ArcGIS API for JS 4.x (dojo)</span> 
+      <span class="calcite-title-sub hidden-xs">A Bootstrap theme for building modern map apps</span>
     </div>
-     <!-- Nav -->
-    <ul class="calcite-nav nav navbar-nav">                    
-      <li><a id="mapNav" class="hidden-xs hidden-sm" href="#mapTab" aria-controls="mapTab" aria-expanded="true" role="tab" data-toggle="tab" data-tooltip="tip" title="2D View" data-placement="bottom">Map</a></li>
-      <li class="active"><a id="sceneNav" class="hidden-xs hidden-sm" href="#sceneTab" aria-controls="mapTab" role="tab" data-toggle="tab" data-tooltip="tip" title="3D View" data-placement="bottom">Scene</a></li>                  
+    <!-- Nav -->
+    <ul class="nav navbar-nav calcite-nav">
       <li>
-        <div class="calcite-navbar-search calcite-search-expander" role="presentation" tabindex="-1">
-          <div id="searchNavDiv" tabindex="0"></div>
+        <div class="calcite-navbar-search calcite-search-expander">
+          <div id="searchWidgetDiv"></div>
         </div>
       </li>
     </ul>
-  </nav><!--/.navbar -->
+  </nav>
 
-  <!-- Map Container  -->
+  <!--/.calcite-navbar -->
+
+  <!-- Map  -->
 
   <div class="calcite-map calcite-map-absolute">
-    <div id="tabContainer" class="tab-content">
-      <div id="mapTab" class="tab-pane fade" role="tabpanel">
-         <div id="mapViewDiv"></div>
-      </div>
-      <div id="sceneTab" class="tab-pane fade in active" role="tabpanel">
-        <div id="sceneViewDiv"></div>
-      </div>
-    </div>
+    <div id="mapViewDiv"></div>
   </div>
 
-  <!-- Panel Container -->
+  <!-- /.calcite-map -->
 
-  <div class="calcite-panels calcite-panels-right calcite-bg-custom calcite-text-light calcite-bgcolor-dark-blue panel-group" role="tablist" aria-multiselectable="true">
-        
-    <!-- Info Panel -->
-    
-    <div id="panelInfo" class="panel collapse">
+  <!-- Panels -->
+
+  <div class="calcite-panels calcite-panels-right calcite-text-light calcite-bg-dark panel-group">
+
+    <!-- Panel - Basemaps -->
+
+    <div id="panelInfo" class="panel collapse in">
       <div id="headingInfo" class="panel-heading" role="tab">
         <div class="panel-title">
-          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">Info</span></a> 
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">About</span></a> 
           <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelInfo"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
         </div>
       </div>
-      <div id="collapseInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingInfo">
+      <div id="collapseInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingInfo">
         <div class="panel-body">
-          <p>The main styles used in this app are:</p>
-          Body
-          <li>calcite-nav-top</li>
-          <br>
-          Nav
-          <li>calcite-bgcolor-dark-blue</li>
-          <li>calcite-text-light</li>
-          <br>
-          Dropdown
-          <li>calcite-menu-drawer</li>
-          <br>
-          Panels
-          <li>calcite-panels-right</li>
-          <li>calcite-bg-custom</li>
+          <p>This is my map app!</p>
         </div>
      </div>
     </div>
 
-    <!-- Basemaps Panel -->
-    
-    <div id="panelBasemaps" class="panel collapse"> 
-      <div id="headingBasemaps" class="panel-heading" role="tab">
+    <!-- Panel - Legend -->
+
+    <div id="panelLegend" class="panel collapse">
+      <div id="headingLegend" class="panel-heading" role="tab">
         <div class="panel-title">
-          <a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseBasemaps" aria-expanded="false"   aria-controls="collapseBasemaps"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><span class="panel-label">Basemaps</span></a> 
-          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelBasemaps"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Legend</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelLegend"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
         </div>
       </div>
-      <div id="collapseBasemaps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBasemaps">
-        <div class="panel-body">
-          <select id="selectBasemapPanel" class="form-control">
-            <option value="streets" data-vector="streets-vector">Streets</option>
-            <option value="satellite" data-vector="satellite" selected="">Satellite</option>
-            <option value="hybrid" data-vector="hybrid">Hybrid</option>
-            <option value="national-geographic" data-vector="national-geographic">National Geographic</option>
-            <option value="topo" data-vector="topo-vector">Topographic</option>
-            <option value="gray" data-vector="gray-vector">Gray</option>
-            <option value="dark-gray" data-vector="dark-gray-vector">Dark Gray</option>
-            <option value="osm" data-vector="osm">Open Street Map</option>
-            <option value="dark-gray" data-vector="streets-night-vector">Streets Night</option>
-            <option value="streets" data-vector="streets-navigation-vector">Streets Mobile</option>
-          </select>
+      <div id="collapseLegend" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLegend">
+        <div class="panel-body">            
+          <div id="legendDiv"></div>
         </div>
       </div>
     </div>
-  </div> <!-- /.calcite-panels -->
+
+  </div>
+
+  <!-- /.calcite-panels -->
 
   <script type="text/javascript">
     var dojoConfig = {
       packages: [{
         name: "bootstrap",
-        location: location.pathname.replace(/\/[^/]+$/, "") + "./../../dist/vendor/dojo-bootstrap"
+        location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
       },
       {
         name: "calcite-maps",
-        location: location.pathname.replace(/\/[^/]+$/, "") + "./../../dist/js/dojo"
+        location: "https://esri.github.io/calcite-maps/dist/js/dojo"
+        
       }]
     };
   </script>
@@ -161,146 +136,111 @@
   <script src="https://js.arcgis.com/4.10/"></script>
 
   <script>
-
-    var app;
-
-    require(["esri/Map",
-      "esri/Basemap",
+    
+    require([
+      // ArcGIS
+      "esri/WebMap",
       "esri/views/MapView",
-      "esri/views/SceneView",
-      "esri/widgets/Search",
-      "esri/core/watchUtils",
-      "dojo/query",
 
-      // Calcite-maps
-      "calcite-maps/calcitemaps-v0.10",
-      "calcite-maps/calcitemaps-arcgis-support-v0.10",
+      // Widgets
+      "esri/widgets/Home",
+      "esri/widgets/Zoom",
+      "esri/widgets/Compass",
+      "esri/widgets/Search",
+      "esri/widgets/Legend",
+      "esri/widgets/BasemapToggle",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/Attribution",
 
       // Bootstrap
-      "bootstrap/Collapse", 
+      "bootstrap/Collapse",
       "bootstrap/Dropdown",
-      "bootstrap/Tab",      
+
+      // Calcite Maps
+      "calcite-maps/calcitemaps-v0.10",
+      
+      // Calcite Maps ArcGIS Support
+      "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
       "dojo/domReady!"
-    ], function(Map, Basemap, MapView, SceneView, Search, watchUtils, query, CalciteMaps, CalciteMapsArcGIS) {
-        
-      // App
-      app = {
-        zoom: 1,
-        center: [-40,40],
-        basemap: "satellite",
-        viewPadding: {
-          top: 50, bottom: 0
+    ], function(WebMap, MapView, Home, Zoom, Compass, Search, Legend, BasemapToggle, ScaleBar, Attribution,Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport) {
+
+      /******************************************************************
+       *
+       * Create the map, view and widgets
+       * 
+       ******************************************************************/
+
+      // Map
+      var map = new WebMap({
+        portalItem: {
+          id: "9f91f911f58540ceaac0300c55e18fbb"
+        }
+      });
+      
+      // View
+      var mapView = new MapView({
+        container: "mapViewDiv",
+        map: map,
+        padding: {
+          top: 50,
+          bottom: 0
         },
-        uiPadding: {
-          top: 15, bottom: 15
-        },
-        map: null,
-        mapView: null,
-        sceneView: null,
-        activeView: null,
-        searchWidgetNav: null,
-        containerMap: "mapViewDiv",
-        containerScene: "sceneViewDiv"
-      };
-
-      // Map 
-      app.map = new Map({
-        basemap: app.basemap,
-        ground: "world-elevation"
+        ui: {components: []}
       });
 
-      // 2D View
-      app.mapView = new MapView({
-        container: null, // deactivate
-        map: app.map,
-        zooom: app.zoom,
-        center: app.center,
-        padding: app.viewPadding,
-        ui: {
-          components: ["zoom", "compass", "attribution"],
-          padding: app.uiPadding
-        }
+      // Popup and panel sync
+      mapView.when(function(){
+        CalciteMapArcGISSupport.setPopupPanelSync(mapView);
       });
 
-      // 3D View
-      app.sceneView = new SceneView({
-        container: app.containerScene, // activate
-        map: app.map,
-        zoom: app.zoom,
-        center: app.center,
-        padding: app.viewPadding,
-        ui: {
-          padding: app.uiPadding
-        }
+      // Search - add to navbar
+      var searchWidget = new Search({
+        container: "searchWidgetDiv",
+        view: mapView
       });
+      CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
-      // Active view is scene
-      setActiveView(app.sceneView);
-
-      // Create search widget
-      app.searchWidgetNav = new Search({
-        container: "searchNavDiv",
-        view: app.activeView
+      // Map widgets
+      var home = new Home({
+        view: mapView
       });
+      mapView.ui.add(home, "top-left");
 
-      // Wire-up expand events
-      CalciteMapsArcGIS.setSearchExpandEvents(app.searchWidgetNav);
-      CalciteMapsArcGIS.setPopupPanelSync(app.mapView);
-      CalciteMapsArcGIS.setPopupPanelSync(app.sceneView);
+      var zoom = new Zoom({
+        view: mapView
+      });
+      mapView.ui.add(zoom, "top-left");
 
-      // Menu UI - change Basemaps
-      query("#selectBasemapPanel").on("change", function(e){
-        app.mapView.map.basemap = e.target.options[e.target.selectedIndex].dataset.vector;
-        app.sceneView.map.basemap = e.target.value;
-      });  
+      var compass = new Compass({
+        view: mapView
+      });
+      mapView.ui.add(compass, "top-left");
+      
+      var basemapToggle = new BasemapToggle({
+        view: mapView,
+        secondBasemap: "satellite"
+      });
+      mapView.ui.add(basemapToggle, "bottom-right");          
+      
+      var scaleBar = new ScaleBar({
+        view: mapView
+      });
+      mapView.ui.add(scaleBar, "bottom-left");
 
-      // Tab UI - switch views
-      query(".calcite-navbar li a[data-toggle='tab']").on("click", function(e) {
-        if (e.target.text.indexOf("Map") > -1) {
-          syncViews(app.sceneView, app.mapView);
-          setActiveView(app.mapView);
-        } else {
-          syncViews(app.mapView, app.sceneView);
-          setActiveView(app.sceneView);
-        }
-        syncSearch(app.activeView);
-      }); 
+      var attribution = new Attribution({
+        view: mapView
+      });
+      mapView.ui.add(attribution, "manual");
 
-      // Views
-      function syncViews(fromView, toView) {
-        var viewPt = fromView.viewpoint.clone();
-        fromView.container = null;
-        if (fromView.type === "3d") {          
-          toView.container = app.containerMap;
-        } else {
-          toView.container = app.containerScene;
-        }
-        toView.viewpoint = viewPt;
-        toView.padding = app.viewPadding;
-      }
-
-      // Search Widget
-      function syncSearch(view) {
-        app.searchWidgetNav.view = view;
-        if (app.searchWidgetNav.selectedResult) {
-          watchUtils.whenTrueOnce(view,"ready",function(){
-            app.searchWidgetNav.autoSelect = false;
-            app.searchWidgetNav.search(app.searchWidgetNav.selectedResult.name);
-            app.searchWidgetNav.autoSelect = true;            
-          });
-        }
-      }
-
-      // Active view
-      function setActiveView(view) {
-        app.activeView = view;
-      }
+      // Panel widgets - add legend
+      var legendWidget = new Legend({
+        container: "legendDiv",
+        view: mapView
+      });
 
     });
-
   </script>
 
 </body>
 </html>
-
