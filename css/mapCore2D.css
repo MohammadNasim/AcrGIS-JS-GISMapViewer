@@ -1,0 +1,222 @@
+html,
+body,
+#mapViewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+}
+#formDiv {
+        width: 100%;
+}
+	  
+#addTemplatesDiv {
+        word-wrap: break-word;
+}
+
+span {
+		word-break: break-all;
+}
+.esri-item-list__scroller {
+        overflow-y: visible;
+}
+
+.editArea-container {
+        background: #fff;
+        line-height: 1.5em;
+        overflow: auto;
+        padding: 12px 15px;
+        width: 300px;
+}
+
+.list-heading {
+        font-weight: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #323232;
+}
+
+.or-wrap {
+        background-color: #e0e0e0;
+        height: 1px;
+        margin: 2em 0;
+        overflow: visible;
+}
+
+.or-text {
+        background: #fff;
+        line-height: 0;
+        padding: 0 1em;
+        position: relative;
+        bottom: 0.75em;
+}
+
+      /* override default styles */
+.esri-feature-form {
+        background: #fff;
+}
+
+.esri-feature-templates {
+        width: 256px;
+}
+
+.esri-feature-templates__section-header {
+        display: none;
+}
+
+.esri-feature-templates__section {
+        box-shadow: none;
+}
+
+.esri-feature-templates__scroller {
+        max-height: 200px;
+}
+
+/*Measuement Starts here*/
+.action-button {
+      font-size: 16px;
+      background-color: transparent;
+      border: 1px solid #D3D3D3;
+      color: #6e6e6e;
+      height: 32px;
+      width: 32px;
+      text-align: center;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+.action-button:hover,
+.action-button:focus {
+      background: #0079c1;
+      color: #e4e4e4;
+}
+.active {
+      background: #0079c1;
+      color: #e4e4e4;
+}
+/*Measuement Ends here*/
+
+/*BookMark Starts here*/
+.esriBookmarks {
+      width: 100%;
+      position: relative;
+    }
+
+.esriBookmarkTable {
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+.esriBookmarkItem {
+      padding: 5px 10px;
+      width: 100%;
+      border: 1px solid transparent;
+      height: 36px;
+      cursor: pointer;
+    }
+
+.esriBookmarkItem>* {
+      /*pointer-events: none;*/
+    }
+
+.esriBookmarkLabel {
+      pointer-events: none;
+      position: relative;
+      float: left;
+      overflow: hidden;
+      line-height: 26px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      vertical-align: middle;
+      margin-left: 0;
+      user-select: none;
+}
+
+.esriBookmarkHighlight {
+      background-color: #e2f1fb;
+}
+
+*,
+*:before,
+*:after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+}
+
+.esriAddBookmark {
+      color: #6e6e6e;
+}
+
+.esriBookmarkEditBox {
+      position: fixed;
+      font-size: 14px;
+      height: 34px;
+      width: 200px;
+      z-index: 999;
+      padding: 0;
+      margin: 0 10px;
+      border: 0;
+      border-bottom: 1px solid #007ac2;
+      background: #fff
+}
+
+.esriBookmarkEditBox:focus {
+      outline: none
+}
+
+.esriBookmarkRemoveImage,
+.esriBookmarkEditImage {
+      float: right;
+      width: 30px;
+      cursor: pointer;
+      font-family: "CalciteWebCoreIcons";
+      speak: none;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      text-indent: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 26px;
+      text-align: center;
+}
+
+.esriBookmarkItem:before {
+      float: left;
+      font-family: "CalciteWebCoreIcons";
+      speak: none;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      text-indent: 0;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "";
+      color: inherit;
+      line-height: 26px;
+      margin-right: 5px;
+}
+
+.esriBookmarkRemoveImage:before {
+      content: "\e600";
+}
+
+.esriBookmarkEditImage:before {
+      content: "\e61b";
+}
+
+.esriAddBookmark:before {
+      content: "\e620";
+}
+
+.esriBookmarkItem:after {
+      content: "";
+      display: table;
+      clear: both;
+}
+/*BookMark ends here*/

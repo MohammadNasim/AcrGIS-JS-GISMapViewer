@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="ArcGIS JS v4, Calcite Maps and Bootstrap Example">
+ 
+  <title>NASIM'S GIS PORTAL</title>
+  <script language="JavaScript" type="text/javascript" src="js/webConfig.js"></script>
+  <!-- ArcGIS JS 4 -->
+  <link rel="stylesheet" href="css/mapCore2D.css">
+  <script>
+	  var dojoConfig = {
+		has: {
+		  "esri-featurelayer-webgl": 1
+		}
+	  };
+  </script>
+</head>
+
+<body class="calcite-maps calcite-nav-top">
+
+  <!-- Navbar -->
+  <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
+    <!-- Menu -->
+    <div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
+      <a class="dropdown-toggle" role="menubutton" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <div class="calcite-dropdown-toggle">
+          <span class="sr-only">Toggle dropdown menu</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a role="menuitem" tabindex="0" id="btnAbout" data-target="#panelInfo" aria-haspopup="true"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnBasemaps" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
+        <li><a role="menuitem" tabindex="0" id="btnLegend" href="#" data-target="#panelLegend" aria-haspopup="true"><span class="glyphicon glyphicon-list-alt"></span> Legend</a></li>
+        <li><a role="menuitem" tabindex="0" id="btnLayerList" href="#" data-target="#panelLayerList" aria-haspopup="true"><span class="glyphicon glyphicon-th-list"></span> LayerList</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnAttributeInfo" href="#"aria-haspopup="true"><span class="esri-icon-description"></span> Attribute Info</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnSketch" href="#" data-target="#panelSketch" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Sketch</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnMeasurement" href="#" data-target="#panelMeasurement" aria-haspopup="true"><span class="glyphicon glyphicon-resize-small"></span> Measurement</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnCoordinateConversion" href="#" data-target="#panelCoordinateConversion" aria-haspopup="true"><span class="glyphicon glyphicon-random"></span> CoordinateConversion</a></li>		
+		<li><a role="menuitem" tabindex="0" href="#" data-target="#panelPrint" aria-haspopup="true"><span class="glyphicon glyphicon-print"></span> Print</a></li>
+		<li><a role="menuitem" tabindex="0" href="#" data-target="#panelBookMark" aria-haspopup="true"><span class="glyphicon glyphicon-bookmark"></span> BookMark</a></li>
+		<li><a role="menuitem" tabindex="0" href="#" id="calciteToggleNavbar" aria-haspopup="true"><span class="glyphicon glyphicon-fullscreen"></span> Full Map</a></li>
+		<li><a role="menuitem" tabindex="0" id="btnGISDashboard" href="#" data-target="#" aria-haspopup="true"><span class="esri-icon-dashboard"></span>GIS Dashboard</a></li>
+      </ul>
+    </div>
+    <!-- Title -->
+    <div class="calcite-title calcite-overflow-hidden">
+      <span class="calcite-title-main">GIS 2D Map</span>
+      <span class="calcite-title-divider hidden-xs"></span>
+      <span class="calcite-title-sub hidden-xs">USA Administrative Demo Map</span>
+    </div>
+    <ul class="nav navbar-nav calcite-nav">
+      <li>
+        <div class="calcite-navbar-search calcite-search-expander">
+          <div id="searchWidgetDiv"></div>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+  <!--/.calcite-navbar -->
+
+  <!-- Map  -->
+
+  <div class="calcite-map calcite-map-absolute">
+      <div id="mapViewDiv"></div>
+  </div>
+  <!-- /.calcite-map -->
+
+   
+
+	 <!-- Feature Editing Main Div Ends here -->
+  <!-- Panels -->
+  <div class="calcite-panels calcite-panels-right calcite-text-light calcite-bg-dark panel-group">
+
+    <!-- Panel - Basemaps -->
+	
+	<div id="panelBasemaps" class="panel collapse">
+            <div id="headingBasemaps" class="panel-heading" role="tab">
+                <div class="panel-title">
+                    <a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseBasemaps" aria-expanded="false" aria-controls="collapseBasemaps"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><span class="panel-label">Basemaps</span></a>
+                    <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelBasemaps"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>
+                </div>
+            </div>
+            <div id="collapseBasemaps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBasemaps">
+                <div class="panel-body">
+                    <select id="selectBasemapPanel" class="form-control">
+                        <option value="streets" data-vector="e-streets">Streets</option>
+                        <option value="satellite" data-vector="e-satellite" selected>Satellite</option>
+                        <option value="hybrid" data-vector="e-hybrid">Hybrid</option>
+                        <option value="terrain" data-vector="e-terrain">Terrain</option>
+                        <option value="topo" data-vector="e-topo">Topographic</option>
+                    </select>
+                </div>
+            </div>
+    </div>
+
+    <div id="panelInfo" class="panel collapse">
+      <div id="headingInfo" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">About</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelInfo"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
+        </div>
+      </div>
+      <div id="collapseInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingInfo">
+        <div class="panel-body">
+		<img src="img/logo.jpg" alt="NASIM">
+		  <h3>Welcome to Arc-GIS Map Viewer</h3>
+                    <br>
+                    <p>This product is dedicated to a secure and sustainable GIS Basic Map Features.In line with Vision of ensuring high quality, sustainable and reliable services to all people in the world.
+                    <p>Vision: An innovative GIS Map Solution that sustains life, strengthens our communities, and protects natural resources for future generations.</p>
+                    <p>Our Values: STARS --> Service, Teamwork, Accountability, Respect and Safety</p>
+                    <br>
+                    <p>Communicate with me:</p>
+                    <li>Landline- +968 91335738 – Mohammad Nasim - mnasimsiddiqui@gmail.com</li>
+					<p>With your feedback, we can make this web application more useful and interactive.</p>
+					<br>
+					<br>
+        </div>
+     </div>
+    </div>
+
+    <!-- Panel - Legend -->
+
+    <div id="panelLegend" class="panel collapse">
+      <div id="headingLegend" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Legend</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelLegend"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseLegend" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLegend">
+        <div class="panel-body">            
+          <div id="legendDiv"></div>
+        </div>
+      </div>
+    </div>
+	
+	    <!-- Panel - LayerList -->
+
+    <div id="panelLayerList" class="panel collapse">
+      <div id="headingLayerList" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseLayerList" aria-expanded="false" aria-controls="collapseLayerList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">LayerList</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelLayerList"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseLayerList" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLayerList">
+        <div class="panel-body">            
+          <div id="LayerListDiv"></div>
+        </div>
+      </div>
+    </div>
+	
+		<!-- Panel - Print -->
+
+    <div id="panelPrint" class="panel collapse">
+      <div id="headingPrint" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapsePrint" aria-expanded="false" aria-controls="collapsePrint"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Print</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelPrint"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapsePrint" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPrint">
+        <div class="panel-body">            
+          <div id="PrintDiv"></div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Panel - Sketch -->
+
+    <div id="panelSketch" class="panel collapse">
+      <div id="headingSketch" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseSketch" aria-expanded="false" aria-controls="collapseSketch"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Sketch</span></a> 
+          <a id="closeIconSketch" class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelSketch"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseSketch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSketch">
+        <div class="panel-body">            
+          <div id="SketchDiv"></div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Panel - Measurement -->
+
+    <div id="panelMeasurement" class="panel collapse">
+      <div id="headingMeasurement" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseMeasurement" aria-expanded="false" aria-controls="collapseMeasurement"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Measurement</span></a> 
+          <a  id="closeIconMeasurement" class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelMeasurement"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseMeasurement" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMeasurement">
+        <div class="panel-body">            
+          <div id="MeasurementDiv">
+		      <button class="action-button esri-icon-minus" id="distanceButton" type="button" title="Measure distance between two or more points"></button>
+			  <button class="action-button esri-icon-polygon" id="areaButton" type="button" title="Measure area"></button>
+	      </div>
+        </div>
+      </div>
+    </div>
+
+	
+	<!-- Panel - CoordinateConversion -->
+
+	<div id="panelCoordinateConversion" class="panel collapse">
+		<div id="headingCoordinateConversion" class="panel-heading" role="tab">
+			<div class="panel-title">
+			<a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseCoordinateConversion" aria-expanded="false" aria-controls="collapseCoordinateConversion"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">CoordinateConversion</span></a> 
+			<a id="closeIconCoordinateConversion" class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelCoordinateConversion"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+			</div>
+		</div>
+		<div id="collapseCoordinateConversion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCoordinateConversion">
+			<div class="panel-body">            
+				<div id="CoordinateConversionDiv" style="width:100%"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Panel - BookMark -->
+	
+    <div id="panelBookMark" class="panel collapse">
+      <div id="headingBookMark" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseBookMark" aria-expanded="false" aria-controls="collapseBookMark"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">BookMark</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelBookMark"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseBookMark" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBookMark">
+        <div class="panel-body">            
+          <div id="BookMarkDiv"></div>
+        </div>
+      </div>
+    </div>
+	
+	    <!-- Panel - Highlight -->
+
+    <div id="panelHighlight" class="panel collapse">
+      <div id="headingHighlight" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseHighlight" aria-expanded="false" aria-controls="collapseHighlight"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Feature query by selection</span></a> 
+          <a id="closeIconHighlight" class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelHighlight"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
+        </div>
+      </div>
+      <div id="collapseHighlight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHighlight">
+        <div class="panel-body"> 
+			  <div class="esri-widget" id="optionsDiv">
+				<br>
+				<select class="form-control" id="attSelect">
+				</select>
+				<br>
+				<button type="button" class="btn btn-primary btn-block" id="doAreaSelection">Select Area on Map</button>
+				<br>
+				<button type="button" class="btn btn-primary btn-block" id="doClear">Clear</button>
+				<br>
+				<p><span id="printResults"></span></p>
+			  </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <!-- /.calcite-panels -->
+
+  <script type="text/javascript">
+    var dojoConfig = {
+      packages: [{
+        name: "bootstrap",
+		location: calCitemapServices.dojoBootstrapUrl
+      },
+      {
+        name: "calcite-maps",
+        location: calCitemapServices.dojoUrl
+      }]
+    };
+  </script>
+
+  <!-- ArcGIS JS 4 -->
+<script src = "https://js.arcgis.com/4.14/"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/mapCore2D.js"></script>
+</body>
+</html>
