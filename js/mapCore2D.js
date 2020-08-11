@@ -169,10 +169,14 @@ require([
 		//document.getElementById("closeIconHighlight").addEventListener("click",doRemoveGraphicsAndFeature);
 		//document.getElementById("closeIconCoordinateConversion").addEventListener("click",doRemoveGraphicsAndFeature);
 		//document.getElementById("btnGISDashboard").addEventListener("click",doMoveToGISDashboard);
+		
 		document.getElementById("btnAttributeInfo").addEventListener("click",doAttributeInfo);
 		document.getElementById("btnSketch").addEventListener("click",doRemoveGraphicsAndFeature);
+		document.getElementById("closeIconSketch").addEventListener("click",doRemoveGraphicsAndFeature);
 		document.getElementById("btnMeasurement").addEventListener("click",doRemoveGraphicsAndFeature);
+		document.getElementById("closeIconMeasurement").addEventListener("click",doRemoveGraphicsAndFeature);
 		document.getElementById("btnCoordinateConversion").addEventListener("click",doRemoveGraphicsAndFeature);
+		document.getElementById("closeIconCoordinateConversion").addEventListener("click",doRemoveGraphicsAndFeature);
       });
 	  
 	  
@@ -278,9 +282,9 @@ require([
           layer: sketchLayer,
           view: mapView,
 		  viewModel: sketchViewModelSketch,
-		  container: "SketchDiv"
+		  container: "SketchDiv",
+		  creationMode: "single"
       });
-	  
 	  
 	    function unselectFeature() {
           if (highlight) {
@@ -289,7 +293,9 @@ require([
         }
 
 	  function doRemoveGraphicsAndFeature() { 
-	    document.getElementById("mapViewDiv").style.cursor = "auto";
+	    ccWidget.mode="live";
+	    document.getElementById("mapViewDiv").style.cursor = "pointer";
+		
 		let nlayer = [];
 		let ctr = 0;
 		unselectFeature();
@@ -810,14 +816,6 @@ require([
             highlight.remove();
           }
         }
-
-        // Example of clear everything
-        //document.getElementById("btnDelete").onclick = function() {
-		//  resultsDiv.innerHTML = "" ;
-        //  document.getElementById("mapViewDiv").style.cursor = "auto";
-		 // unselectFeature();
-        //};
-
 
     });	
 });
