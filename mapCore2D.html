@@ -45,7 +45,6 @@
 		<li><a role="menuitem" tabindex="0" href="#" data-target="#panelPrint" aria-haspopup="true"><span class="glyphicon glyphicon-print"></span> Print</a></li>
 		<li><a role="menuitem" tabindex="0" href="#" data-target="#panelBookMark" aria-haspopup="true"><span class="glyphicon glyphicon-bookmark"></span> BookMark</a></li>
 		<li><a role="menuitem" tabindex="0" href="#" id="calciteToggleNavbar" aria-haspopup="true"><span class="glyphicon glyphicon-fullscreen"></span> Full Map</a></li>
-		<li><a role="menuitem" tabindex="0" id="btnGISDashboard" href="#" data-target="#" aria-haspopup="true"><span class="esri-icon-dashboard"></span>GIS Dashboard</a></li>
       </ul>
     </div>
     <!-- Title -->
@@ -112,7 +111,7 @@
         <div class="panel-body">
 		<img src="img/logo.jpg" alt="MOHAMMAD NASIM" style="width:50%;display: block;margin-left: auto;margin-right: auto" >
 		<br>
-		  <h5>Welcome to Official MoboGIS Version 3.2.0.1 - A GIS Map Viewer based on ArcGIS JavaScript API 10.X</h5>
+		  <h5>Welcome to Official MoboGIS Version 3.2.0.1 Dated 11-Aug-2020 : A GIS Map Viewer based on ArcGIS JavaScript API 10.X</h5>
                     <br>
                     <p style="text-align:justify">This product is dedicated to a secure and sustainable GIS Basic Map Novel Work written by Mohammad Nasim. In line with Vision of ensuring high quality, sustainable and reliable code work for the people.</p>
 					<br>
@@ -242,35 +241,6 @@
         </div>
       </div>
     </div>
-	
-	    <!-- Panel - Highlight -->
-
-    <div id="panelHighlight" class="panel collapse">
-      <div id="headingHighlight" class="panel-heading" role="tab">
-        <div class="panel-title">
-          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseHighlight" aria-expanded="false" aria-controls="collapseHighlight"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span class="panel-label">Feature query by selection</span></a> 
-          <a id="closeIconHighlight" class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelHighlight"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a> 
-        </div>
-      </div>
-      <div id="collapseHighlight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHighlight">
-        <div class="panel-body"> 
-			  <div class="esri-widget" id="optionsDiv">
-				<br>
-				<select class="form-control" id="attSelect">
-				</select>
-				<br>
-				<button type="button" class="btn btn-primary btn-block" id="doAreaSelection">Select Area on Map</button>
-				<br>
-				<button type="button" class="btn btn-primary btn-block" id="doClear">Clear</button>
-				<br>
-				<p><span id="printResults"></span></p>
-			  </div>
-        </div>
-      </div>
-    </div>
-
-
-
   </div>
 
   <!-- /.calcite-panels -->

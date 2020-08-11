@@ -1,5 +1,5 @@
 var jsConfig = {
-   ArcGISProxyUrl:'http://10.180.2.21/DotNet/proxy.ashx',
+   ArcGISProxyUrl:'https://10.180.2.21/DotNet/proxy.ashx',
    mapZoom: 4,
    mapCenter: [-100, 39]
 };
