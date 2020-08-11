@@ -96,10 +96,37 @@ require([
 		params:null
 		}
 		let editFeature, highlight;
+        
+		var statesRenderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
+            style: "none",
+            outline: {
+              width: 2,
+              color: "white"
+            }
+          },
+          label: "State boundaries"
+        };
+		
+	  var countiesRenderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
+            style: "none",
+            outline: {
+              width: 1,
+              color: "blue"
+            }
+          },
+          label: "County boundaries"
+      };
 
 	  //Change 1
 	  var mapNetwork = new MapImageLayer({
-	  url: GISServices.WmsUrl
+	  url: GISServices.WmsUrl,
+	  sublayers: [{id: 0},{id: 1},{id: 3,renderer: countiesRenderer,opacity: 0.5,minScale: 9250000},{id: 2,renderer: statesRenderer,opacity: 0.7}]
 	  });																																		
 	  //Graphic Layer Starts Here
 	  sketchLayer = new GraphicsLayer();
