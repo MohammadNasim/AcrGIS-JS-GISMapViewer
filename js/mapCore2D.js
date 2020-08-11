@@ -104,7 +104,7 @@ require([
             style: "none",
             outline: {
               width: 2,
-              color: "white"
+              color: "red"
             }
           },
           label: "State boundaries"
