@@ -104,7 +104,7 @@ require([
             style: "none",
             outline: {
               width: 2,
-              color: "red"
+			  color: "#00FFFF"
             }
           },
           label: "State boundaries"
@@ -117,7 +117,7 @@ require([
             style: "none",
             outline: {
               width: 1,
-              color: "blue"
+              color: "#FF00FF"
             }
           },
           label: "County boundaries"
@@ -126,7 +126,7 @@ require([
 	  //Change 1
 	  var mapNetwork = new MapImageLayer({
 	  url: GISServices.WmsUrl,
-	  sublayers: [{id: 0},{id: 1},{id: 3,renderer: countiesRenderer,opacity: 0.5,minScale: 9250000},{id: 2,renderer: statesRenderer,opacity: 0.7}]
+	  sublayers: [{id: 1,title:"Highways"},{id: 0,title:"Cities"},{id: 3,title:"Counties",renderer: countiesRenderer,opacity: 0.5,minScale: 9250000},{id: 2,title:"States",renderer: statesRenderer,opacity: 0.7}]
 	  });																																		
 	  //Graphic Layer Starts Here
 	  sketchLayer = new GraphicsLayer();
