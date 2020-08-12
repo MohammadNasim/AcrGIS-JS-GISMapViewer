@@ -28,7 +28,7 @@ Try The Demo:
 
 [https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/92665234233850429748d9b5376b372236c3aeeb/mapCore2D.html](https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/92665234233850429748d9b5376b372236c3aeeb/mapCore2D.html%20)
 
-<img src="img/2.png" width="7.270138888888889in" height="3.0959634733158357in">
+<img src="img/2.png">
 
 **Functions Included inside the framework:**
 
