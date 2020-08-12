@@ -10,7 +10,7 @@ AcrGIS Javascipt GIS MapViewer with all basic functionality
 
 ## Introduction
 
-[MoboGIS ](https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/92665234233850429748d9b5376b372236c3aeeb/mapCore2D.html)is an open source mapping framework. MoboGIS works with the [Esri JavaScript API](https://developers.arcgis.com/javascript/jsapi/3/), [ArcGIS Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite Maps](https://github.com/esri/calcite-maps/), [ArcGIS Online](https://arcgis.com/) and more.
+[MoboGIS ](https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/92665234233850429748d9b5376b372236c3aeeb/mapCore2D.html)is an open source mapping framework. MoboGIS works with the [Esri JavaScript API](https://developers.arcgis.com/javascript), [ArcGIS Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite Maps](https://github.com/esri/calcite-maps/), [ArcGIS Online](https://arcgis.com/) and more.
 
 ##
 
