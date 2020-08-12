@@ -82,19 +82,16 @@ file ](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer/blob/master/js/w
 
 One typical example to show the Measurement Widget capabilities.
 
-![D:\\WebSite\\Images\\3.PNG](img/image3.png){width="7.270138888888889in"
-height="3.075800524934383in"}
+<img src="img/3.PNG">
 
 Another example that is 'Print' widget shown in the picture below.
 
-![D:\\WebSite\\Images\\1.PNG](img/image4.png){width="7.270138888888889in"
-height="3.124019028871391in"}
+<img src="img/1.PNG">
 
 Print (Output)
 --------------
 
-![D:\\WebSite\\Images\\4.PNG](img/image5.png){width="6.336111111111111in"
-height="4.895833333333333in"}
+<img src="img/4.PNG">
 
 Mobile
 ------
@@ -102,8 +99,6 @@ Mobile
 One of the strengths of using Calcite Maps is the responsive design
 provided by the Bootstrap framework.
 
-(img/5.png){width="4.645254811898512in"
-height="6.229166666666667in"}
+<img src="img/5.PNG">
 
-(img/6.png){width="4.770833333333333in"
-height="6.365577427821522in"}
+<img src="img/6.PNG">
