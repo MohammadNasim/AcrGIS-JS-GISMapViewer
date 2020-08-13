@@ -68,14 +68,14 @@ Demo:
 11. Locate Button (Geolocation)
 
 Example 1:
-=========
+-------------
 
 Measurement Widget capabilities.
 
 <img src="media/Image3.jpg">
 
 Example 2:
-=========
+-------------
 
 'Print' widget shown in the picture below.
 
