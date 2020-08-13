@@ -7,7 +7,7 @@ built on the the [Esri JavaScript
 API](https://developers.arcgis.com/javascript/jsapi/3/), [ArcGIS
 Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite
 Maps](https://github.com/esri/calcite-maps/), [ArcGIS
-Online](https://arcgis.com/), Dojo Toolkit and more.
+Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org/) and more.
 
 
 <img src="media/image1.jpeg">
