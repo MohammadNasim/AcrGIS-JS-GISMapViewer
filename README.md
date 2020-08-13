@@ -1,4 +1,4 @@
-<img src="media/image1.jpg">
+<img src="media/Image1.jpg">
 About
 -----
 
@@ -11,7 +11,7 @@ Maps](https://github.com/esri/calcite-maps/), [ArcGIS
 Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org) and more.
 
 
-<img src="media/image2.jpg">
+<img src="media/Image2.jpg">
 
 This repo
 combines [MoboGIS](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer) with
