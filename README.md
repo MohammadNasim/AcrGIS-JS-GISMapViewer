@@ -67,16 +67,16 @@ Examples:
 
 Measurement Widget capabilities.
 
-<img src="media/image3.jpg">
+<img src="media/Image3.jpg">
 
 'Print' widget shown in the picture below.
 
-<img src="media/image4.jpg">
+<img src="media/Image4.jpg">
 
 Print (Output)
 --------------
 
-<img src="media/image5.jpg">
+<img src="media/Image5.jpg">
 
 Mobile
 ------
@@ -84,6 +84,6 @@ Mobile
 One of the strengths of using Calcite Maps is the responsive design
 provided by the Bootstrap framework.
 
-<img src="media/image6.jpg">
+<img src="media/Image6.jpg">
 
-<img src="media/image7.jpg">
+<img src="media/Image7.jpg">
