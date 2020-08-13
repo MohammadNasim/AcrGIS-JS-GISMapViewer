@@ -9,7 +9,8 @@ Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite
 Maps](https://github.com/esri/calcite-maps/), [ArcGIS
 Online](https://arcgis.com/), Dojo Toolkit and more.
 
-(.//media/image1.jpeg)
+
+<img src="media/image1.jpeg" alt="Girl in a jacket" width="500" height="600">
 
 This repo
 combines [MoboGIS](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer) with
