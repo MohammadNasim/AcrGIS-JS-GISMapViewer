@@ -4,10 +4,10 @@ About
 [MoboGIS ](https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/596977a6dcd9673ea1e97fade00a980432993bed/mapCore2D.html)
 - The Editable GIS Map Viewer -- is an open source mapping framework
 built on the the [Esri JavaScript
-API](https://developers.arcgis.com/javascript/jsapi/3/), [ArcGIS
+API](https://developers.arcgis.com/javascript), [ArcGIS
 Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite
 Maps](https://github.com/esri/calcite-maps/), [ArcGIS
-Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org/) and more.
+Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org) and more.
 
 
 <img src="media/image1.jpeg">
