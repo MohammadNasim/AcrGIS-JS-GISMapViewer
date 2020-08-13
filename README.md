@@ -1,4 +1,4 @@
-<img src="media/image1.jpeg">
+<img src="media/image1.jpg">
 About
 -----
 
@@ -11,7 +11,7 @@ Maps](https://github.com/esri/calcite-maps/), [ArcGIS
 Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org) and more.
 
 
-<img src="media/image1.jpeg">
+<img src="media/image2.jpg">
 
 This repo
 combines [MoboGIS](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer) with
@@ -67,16 +67,16 @@ Examples:
 
 Measurement Widget capabilities.
 
-<img src="media/image2.jpeg">
+<img src="media/image3.jpg">
 
 'Print' widget shown in the picture below.
 
-<img src="media/image3.jpeg">
+<img src="media/image4.jpg">
 
 Print (Output)
 --------------
 
-<img src="media/image4.jpeg">
+<img src="media/image5.jpg">
 
 Mobile
 ------
@@ -84,6 +84,6 @@ Mobile
 One of the strengths of using Calcite Maps is the responsive design
 provided by the Bootstrap framework.
 
-<img src="media/image5.jpeg">
+<img src="media/image6.jpg">
 
-<img src="media/image6.jpeg">
+<img src="media/image7.jpg">
