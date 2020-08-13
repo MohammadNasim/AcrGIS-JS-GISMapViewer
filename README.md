@@ -38,14 +38,6 @@ customizations are within the HTML page and
 [webconfig.js](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer/blob/master/js/webConfig.js)
 file.
 
-Make It Your Own!
------------------
-
-This JavaScript web app can be easily editable or used as a Base. It
-also demonstrates best practices for modular design and OOP via classes
-in JS using dojo\'s
-great [dojotoolkit](https://dojotoolkit.org/reference-guide/1.9/dojo/_base/declare.html) API.
-
 Demo:
 -------------
 
@@ -75,20 +67,29 @@ Demo:
 
 11. Locate Button (Geolocation)
 
-Examples:
+Example 1:
 =========
 
 Measurement Widget capabilities.
 
 <img src="media/Image3.jpg">
 
+Example 2:
+=========
+
 'Print' widget shown in the picture below.
 
 <img src="media/Image4.jpg">
 
-Print (Output)
+Result
 --------------
 
 <img src="media/Image5.jpg">
 
+Make It Your Own!
+-----------------
 
+This JavaScript web app can be easily editable or used as a Base. It
+also demonstrates best practices for modular design and OOP via classes
+in JS using dojo\'s
+great [dojotoolkit](https://dojotoolkit.org/reference-guide/1.9/dojo/_base/declare.html) API.
