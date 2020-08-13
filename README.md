@@ -11,6 +11,18 @@ Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite
 Maps](https://github.com/esri/calcite-maps/), [ArcGIS
 Online](https://arcgis.com/), [Dojo Toolkit](https://dojotoolkit.org) and more.
 
+Mobile View - MoboGIS
+------
+
+One of the strengths of using Calcite Maps is the responsive design
+provided by the Bootstrap framework.
+
+<img src="media/Image6.jpg">
+
+<img src="media/Image7.jpg">
+
+Web View - MoboGIS
+-----------------
 
 <img src="media/Image2.jpg">
 
@@ -34,7 +46,7 @@ also demonstrates best practices for modular design and OOP via classes
 in JS using dojo\'s
 great [dojotoolkit](https://dojotoolkit.org/reference-guide/1.9/dojo/_base/declare.html) API.
 
-Try The Demo:
+Demo:
 -------------
 
 <https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/596977a6dcd9673ea1e97fade00a980432993bed/mapCore2D.html>
@@ -79,12 +91,4 @@ Print (Output)
 
 <img src="media/Image5.jpg">
 
-Mobile
-------
 
-One of the strengths of using Calcite Maps is the responsive design
-provided by the Bootstrap framework.
-
-<img src="media/Image6.jpg">
-
-<img src="media/Image7.jpg">
