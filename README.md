@@ -1,3 +1,4 @@
+<img src="media/image1.jpeg">
 About
 -----
 
