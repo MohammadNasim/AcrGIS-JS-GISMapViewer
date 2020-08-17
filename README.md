@@ -38,7 +38,7 @@ customizations are within the HTML page and
 [webconfig.js](https://github.com/MohammadNasim/AcrGIS-JS-GISMapViewer/blob/master/js/webConfig.js)
 file.
 
-Demo:
+Live Demo:
 -------------
 
 <https://rawcdn.githack.com/MohammadNasim/AcrGIS-JS-GISMapViewer/596977a6dcd9673ea1e97fade00a980432993bed/mapCore2D.html>
