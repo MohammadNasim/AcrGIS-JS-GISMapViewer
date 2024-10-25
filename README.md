@@ -3,7 +3,7 @@
 About
 -----
 
-MoboGIS - The Editable GIS Map Viewer -- is an open source responsive mapping framework
+MoboGIS - The Editable GIS Map Viewer -- is an open source responsive mapping framework Application
 built on the the [Esri JavaScript
 API](https://developers.arcgis.com/javascript), [ArcGIS
 Server](https://www.esri.com/software/arcgis/arcgisserver), [Calcite
